@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  altitude: 9.99
+  latitude: 9.99
+  longitude: 9.99
+  happened_at: 2016-01-10 01:38:17
+  user_id: 
+  measure_name_id: 
+  measure_unit_id: 
+  value: 9.99
+  notes: MyText
+
+two:
+  altitude: 9.99
+  latitude: 9.99
+  longitude: 9.99
+  happened_at: 2016-01-10 01:38:17
+  user_id: 
+  measure_name_id: 
+  measure_unit_id: 
+  value: 9.99
+  notes: MyText
