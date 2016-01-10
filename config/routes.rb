@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :measure_units
+
   resources :measurements
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}
