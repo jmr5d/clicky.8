@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = MeasureUnit -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => MeasureUnit %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @measure_unit.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @measure_unit.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:abbreviation) %></dt>
+      <dd><pre class="prettyprint"><%= @measure_unit.abbreviation %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Abbreviation:</strong>
-  <%= @measure_unit.abbreviation %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              measure_units_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_measure_unit_path(@measure_unit), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              measure_unit_path(@measure_unit),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<%= link_to 'Edit', edit_measure_unit_path(@measure_unit) %> |
-<%= link_to 'Back', measure_units_path %>
