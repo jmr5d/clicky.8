@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Measure name:</strong>
+  <%= @preference.measure_name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @preference.user %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @preference.position %>
+</p>
+
+<p>
+  <strong>Measure unit:</strong>
+  <%= @preference.measure_unit %>
+</p>
+
+<p>
+  <strong>Frequency:</strong>
+  <%= @preference.frequency %>
+</p>
+
+<%= link_to 'Edit', edit_preference_path(@preference) %> |
+<%= link_to 'Back', preferences_path %>

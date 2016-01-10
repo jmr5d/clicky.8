@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :preferences
+
   resources :measure_names
 
   resources :measure_units
