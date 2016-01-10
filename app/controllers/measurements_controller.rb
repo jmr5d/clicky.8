@@ -29,6 +29,7 @@ class MeasurementsController < ApplicationController
   # POST /measurements.json
   def create
     @measurement = Measurement.new(measurement_params)
+    @measurement.user = current_user
 
     respond_to do |format|
       if @measurement.save
