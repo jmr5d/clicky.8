@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  measure_name_id: 
+  user_id: 
+  position: 1
+  measure_unit_id: 
+  frequency: 1
+
+two:
+  measure_name_id: 
+  user_id: 
+  position: 1
+  measure_unit_id: 
+  frequency: 1
