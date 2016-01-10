@@ -1,4 +1,5 @@
 ActiveAdmin.register Measurement do
+  permit_params :altitude, :latitude, :longitude, :happened_at, :value, :notes
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
