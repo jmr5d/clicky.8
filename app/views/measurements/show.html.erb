@@ -1,49 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Measurement -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Measurement %></h1>
+</div>
 
-<p>
-  <strong>Altitude:</strong>
-  <%= @measurement.altitude %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:altitude) %></dt>
+      <dd><pre class="prettyprint"><%= @measurement.altitude %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:latitude) %></dt>
+      <dd><pre class="prettyprint"><%= @measurement.latitude %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:longitude) %></dt>
+      <dd><pre class="prettyprint"><%= @measurement.longitude %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:happened_at) %></dt>
+      <dd><pre class="prettyprint"><%= @measurement.happened_at %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:value) %></dt>
+      <dd><pre class="prettyprint"><%= @measurement.value %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:notes) %></dt>
+      <dd><pre class="prettyprint"><%= @measurement.notes %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @measurement.latitude %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              measurements_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_measurement_path(@measurement), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              measurement_path(@measurement),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @measurement.longitude %>
-</p>
-
-<p>
-  <strong>Happened at:</strong>
-  <%= @measurement.happened_at %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @measurement.user %>
-</p>
-
-<p>
-  <strong>Measure name:</strong>
-  <%= @measurement.measure_name %>
-</p>
-
-<p>
-  <strong>Measure unit:</strong>
-  <%= @measurement.measure_unit %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @measurement.value %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @measurement.notes %>
-</p>
-
-<%= link_to 'Edit', edit_measurement_path(@measurement) %> |
-<%= link_to 'Back', measurements_path %>

@@ -1,6 +1,5 @@
-<h1>Editing measurement</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @measurement %> |
-<%= link_to 'Back', measurements_path %>
+<%- model_class = Measurement -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Measurement %></h1>
+</div>
+<%= render :partial => 'form' %>
