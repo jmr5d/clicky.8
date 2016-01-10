@@ -1,29 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Preference -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Preference %></h1>
+</div>
 
-<p>
-  <strong>Measure name:</strong>
-  <%= @preference.measure_name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:position) %></dt>
+      <dd><pre class="prettyprint"><%= @preference.position %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:frequency) %></dt>
+      <dd><pre class="prettyprint"><%= @preference.frequency %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @preference.user %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              preferences_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_preference_path(@preference), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              preference_path(@preference),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Position:</strong>
-  <%= @preference.position %>
-</p>
-
-<p>
-  <strong>Measure unit:</strong>
-  <%= @preference.measure_unit %>
-</p>
-
-<p>
-  <strong>Frequency:</strong>
-  <%= @preference.frequency %>
-</p>
-
-<%= link_to 'Edit', edit_preference_path(@preference) %> |
-<%= link_to 'Back', preferences_path %>
