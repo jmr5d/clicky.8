@@ -29,6 +29,7 @@ class PreferencesController < ApplicationController
   # POST /preferences.json
   def create
     @preference = Preference.new(preference_params)
+    @preference.user = current_user
 
     respond_to do |format|
       if @preference.save
