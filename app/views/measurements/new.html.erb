@@ -4,3 +4,30 @@
 </div>
 <%= render :partial => 'form' %>
 
+<script>
+var alt = document.getElementById("measurement_altitude");
+var lat = document.getElementById("measurement_latitude");
+var lon = document.getElementById("measurement_longitude");
+var result = document.getElementById("result");
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        result.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    if (position.coords.latitude != null) {
+    	lat.value = position.coords.latitude;
+    } else {lat.value = ""}
+
+    if (position.coords.longitude != null) {
+    	lon.value = position.coords.longitude;
+	} else {lon.value = ""}
+    
+    if (position.coords.altitude != null) {
+    	alt.value = position.coords.altitude / 3.28084; // convert meters to feet
+    } else { alt.value = "";}    
+}
+getLocation();
+</script>

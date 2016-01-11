@@ -7,10 +7,27 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :measure_unit_id, "Default Units", :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.select :measure_unit_id, @measure_units.map {|m| [m.name, m.id]}, :include_blank => "Select One", :selected => @measure_name.measure_unit_id, :class => 'text-field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Unit doesn't exist yet?", :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= link_to "Create New Units Here First", new_measure_unit_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
+
       <%= f.submit nil, :class => 'btn btn-primary' %>
+
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                   measure_names_path, :class => 'btn btn-default' %>
     </div>
   </div>
+
 <% end %>

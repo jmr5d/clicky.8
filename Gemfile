@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'acts_as_list', '~> 0.7.2'
+gem 'browser-timezone-rails'
+gem 'acts-as-taggable-on', '~> 3.5'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -57,4 +61,10 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'
+
+group :production do
+	gem 'rails_12factor'
+end
+
+	ruby "2.2.0"
 end

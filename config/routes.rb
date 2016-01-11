@@ -1,20 +1,23 @@
 Rails.application.routes.draw do
+
   resources :preferences
-
   resources :measure_names
-
   resources :measure_units
-
   resources :measurements
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'measurements#index'
+  get 'list', :to => 'measurements#list'
+
+  match ':controller(/:action(/:id))', :via => [:get, :post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

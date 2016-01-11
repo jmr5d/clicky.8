@@ -4,7 +4,7 @@ class MeasureNamesController < ApplicationController
   # GET /measure_names
   # GET /measure_names.json
   def index
-    @measure_names = MeasureName.all
+    @measure_names = MeasureName.all.order('name ASC')
   end
 
   # GET /measure_names/1
@@ -15,16 +15,19 @@ class MeasureNamesController < ApplicationController
   # GET /measure_names/new
   def new
     @measure_name = MeasureName.new
+    @measure_units = MeasureUnit.all.order('name ASC')
   end
 
   # GET /measure_names/1/edit
   def edit
+    @measure_units = MeasureUnit.all.order('name ASC')
   end
 
   # POST /measure_names
   # POST /measure_names.json
   def create
     @measure_name = MeasureName.new(measure_name_params)
+    @measure_units = MeasureUnit.all.order('name ASC')
 
     respond_to do |format|
       if @measure_name.save
@@ -69,6 +72,6 @@ class MeasureNamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def measure_name_params
-      params.require(:measure_name).permit(:name)
+      params.require(:measure_name).permit(:name, :measure_unit_id)
     end
 end

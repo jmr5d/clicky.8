@@ -2,7 +2,7 @@
   <div class="form-group">
     <%= f.label :altitude, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :altitude, :class => 'text-field form-control' %>
+      <%= f.text_field :altitude, :placeholder => "(Not provided by your browser)", :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
@@ -26,15 +26,41 @@
   <div class="form-group">
     <%= f.label :value, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_field :value, :class => 'text-field form-control' %>
+      <%= f.text_field :value, :placeholder => "21.2", autofocus: true, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :notes, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.text_area :notes, :class => 'text-field form-control' %>
+      <%= f.text_area :notes, :placeholder => "i.e., Ate a late dinner last night, had trouble sleeping", :class => 'text-field form-control' %>
     </div>
   </div>
+
+  <div class="form-group">
+    <%= f.label :measure_name_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.select :measure_name_id, @measure_names.map {|m| [m.name, m.id]}, :include_blank => "Select One", :selected => params[:measure_name_id], :class => 'text-field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :measure_unit_id, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.select :measure_unit_id, @measure_units.map {|m| [m.name, m.id]}, :include_blank => "Select One", :selected => params[:measure_unit_id], :class => 'text-field form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tag_list, "Tags", :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :tag_list, :placeholder => "tag, tag, tag...", :class => 'text-field form-control' %>
+    </div>
+  </div>
+
+  <!-- set default bool value to "true" if unit of measure passed in params is a bool -->
+        <% if params[:measure_unit_id] == "2" %>
+          <% @val = "1" %>
+        <% end %>
 
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
