@@ -1,18 +1,14 @@
 <%- model_class = Measurement -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => Measurement %></h1>
+  <h1><%=t '.title', :default => "Activity Journal" %></h1>
 </div>
-  <ul>  
-    <% @measurements.each do |measurement| %>
-        <li><%= @user.first_name %> <strong><%= measurement.measure_name.name %></strong> <% if measurement.measure_unit.abbreviation != "bool" %> <%= measurement.value %> <%= measurement.measure_unit.abbreviation %><% else %><% end %> on <%=l measurement.happened_at, format: "%A, %-m/%-d/%y, at %l:%M %P" %>
+  <ul>
+    <% @measurements_by_user.each do |measurement| %>
+        <li>
+          <strong><%= @user.first_name %></strong> recorded the activity <strong><%= measurement.measure_name.name %></strong> <% if measurement.measure_unit.abbreviation != "bool" %> with a value of <strong><%= measurement.value %></strong> <%= measurement.measure_unit.abbreviation %><% else %><% end %> <em>on <%=l measurement.happened_at, format: "%A, %-m/%-d/%y, at %l:%M %P" %></em>
 
-          <%= link_to measurement_path(measurement), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-            <%= glyph 'pencil' %>
-          <%- end -%>
-          <%= link_to measurement_path(measurement), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
-          <%- end -%>
+          <% if measurement.tag_list.any? %><span class="tab"><br /><em>Tags: <%= measurement.tag_list %></em></span><% else %><% end %>
+          <% if measurement.notes != "" %><span class="tab"><br /><em>Notes: <%= measurement.notes %></em></span><% else %><% end %>
         </li>
     <% end %>
   </ul>

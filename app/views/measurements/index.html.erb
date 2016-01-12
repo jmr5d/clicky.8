@@ -1,17 +1,23 @@
 <%- model_class = Measurement -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => Measurement %></h1>
+  <h1><%=t '.title', :default => 'Record Activities' %></h1>
 </div>
-  <ul class="list-inline">
-    <% @measure_names.each do |m| %>
-    <li>
-      <%= link_to t(m.name, :default => t(m.name)),
-        new_measurement_path(:measure_name_id => m.id, :measure_unit_id => @measure_unit_id),
-        :class => 'btn btn-primary josiah'%>
-    </li>
-    <% end %>
-  </ul>
 
+<ul class="list-inline">
+  <% @measure_names.each do |m| %>
+  <li>
+    <%= link_to t(m.name, :default => t(m.name)),
+      new_measurement_path(:measure_name_id => m.id, :measure_unit_id => @measure_unit_id),
+      :class => 'btn btn-primary josiah'%>
+  </li>
+  <% end %>
+</ul>
+
+<div>
+  <p>
+    Click any button to record a new measurement.
+  </p>
+</div>
 
 
 <!--  :measure_unit_id => @preferences.measure_unit_id -->

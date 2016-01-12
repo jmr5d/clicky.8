@@ -1,7 +1,7 @@
 class MeasurementsController < ApplicationController
 
   #->Prelang (scaffolding:rails/scope_to_user)
-  before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
+  before_filter :require_user_signed_in, only: [:list, :show, :new, :edit, :create, :update, :destroy]
 
   before_action :set_measurement, only: [:show, :edit, :update, :destroy]
   before_action :find_measure_name_id
@@ -11,6 +11,7 @@ class MeasurementsController < ApplicationController
     @measurements = Measurement.all.order('happened_at DESC')
     @measure_names = MeasureName.all.order('name ASC')
     @user = current_user
+    @measurements_by_user = Measurement.where(:user_id => current_user.id).find_each
   end
   
   # GET /measurements

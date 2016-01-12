@@ -1,6 +1,6 @@
 <%- model_class = Measurement -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => Measurement %></h1>
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New Record: ' + @measure_name_name.titleize ], :model => Measurement %></h1>
 </div>
 <%= render :partial => 'form' %>
 
@@ -13,7 +13,7 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        result.innerHTML = "Geolocation is not supported by this browser.";
+        // result.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 function showPosition(position) {
