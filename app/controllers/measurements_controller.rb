@@ -11,7 +11,7 @@ class MeasurementsController < ApplicationController
     @measurements = Measurement.all.order('happened_at DESC')
     @measure_names = MeasureName.all.order('name ASC')
     @user = current_user
-    @measurements_by_user = Measurement.where(:user_id => current_user.id).find_each
+    @measurements_by_user = Measurement.order('happened_at DESC').where(:user_id => current_user.id)
   end
   
   # GET /measurements
