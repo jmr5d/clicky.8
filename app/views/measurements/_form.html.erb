@@ -32,7 +32,7 @@
   <div class="form-group">
     <%= f.label :measure_unit_id, 'Units', :class => 'control-label col-md-2' %>
     <div class="col-md-10">
-      <%= f.select :measure_unit_id, @measure_units.map {|m| [m.name, m.id]}, :include_blank => "Select One", :selected => params[:measure_unit_id], :class => 'text-field form-control' %>
+      <%= f.select :measure_unit_id, @measure_units.map {|m| [m.name, m.id]}, :include_blank => "Select One", :selected => @measure_names.find(params[:measure_name_id]).measure_unit_id, :class => 'text-field form-control' %>
     </div>
   </div>
   <div class="form-group">
