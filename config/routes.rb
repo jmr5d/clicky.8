@@ -14,10 +14,24 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'measurements#index'
+  devise_scope :user do
+    authenticated :user do
+      root :to => redirect('/measurements'), as: :authenticated_root
+    end
+    unauthenticated do
+      root :to => redirect("/users/sign_in"), as: :unauthenticated_root
+    end
+  end
+  root :to => 'measurements#index'
+
   get 'list', :to => 'measurements#list'
 
   match ':controller(/:action(/:id))', :via => [:get, :post]
+
+  # fix for devise routing error when moving from user screens back into the main application
+  # it had been appending 'users' to the front of the route and giving an error
+  get 'users/measurements', :to => 'measurements#index'
+  get 'users/measurements/list', :to => 'measurements#list'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
