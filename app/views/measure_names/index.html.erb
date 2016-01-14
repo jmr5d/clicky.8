@@ -5,22 +5,23 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>ID</th>
+      <!-- <th>ID</th> -->
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%= model_class.human_attribute_name(:measure_unit_id) %></th>
+      <!-- <th><%= model_class.human_attribute_name(:created_at) %></th> -->
+      <!-- <th><%= model_class.human_attribute_name(:measure_unit_id) %></th> -->
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @measure_names.each do |measure_name| %>
       <tr>
-        <td><%= measure_name.id %></td>
+        <!-- <td><%= measure_name.id %></td> -->
         <td><%= measure_name.name %></td>
-        <td><%=l measure_name.created_at, format: :long %></td>
-        <td><%= measure_name.measure_unit_id %></td>
+        <!-- <td><%=l measure_name.created_at, format: :long %></td> -->
+        <!-- <td><%= measure_name.measure_unit_id %></td> -->
         <td>
-          <%= link_to measure_name_path(measure_name), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+          <%= link_to edit_measure_name_path(measure_name), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.edit')) }" do %>
+          <%# link_to measure_name_path(measure_name), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             <%= glyph 'info-sign' %>
             <%= glyph 'pencil' %>
           <%- end -%>
