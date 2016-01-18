@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   # it had been appending 'users' to the front of the route and giving an error
   get 'users/measurements', :to => 'measurements#index'
   get 'users/measurements/list', :to => 'measurements#list'
+  get 'users/measure_names', :to => 'measure_names#index'
+  get 'users/measure_units', :to => 'measure_units#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

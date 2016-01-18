@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -24,7 +24,7 @@
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.password_field :current_password, autocomplete: "off", autofocus: true %>
   </div>
 
   <div class="field">
@@ -39,18 +39,18 @@
 
   <div class="field">
     <%= f.label :birthdate %><br />
-    <%= f.datetime_select :birthdate, :start_year => 1900, :end_year => 2005, :default => {year: Date.current.year-25, month: 01, day: 01, hour: 00, minute: 00} %>
+    <%= f.datetime_select :birthdate, :start_year => 1915, :end_year => 2005 %>
   </div>
 
   <div class="field">
     <%= f.label :height, "Height (inches)" %><br />
-    <%= f.select :height, 24..120 %>
+    <%= f.select :height, (20..100).map{|n| n%1 == 0 ? n.to_f : n} %>
     Note: 60" = 5 ft., 72" = 6 ft., etc.
   </div>
 
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.select :gender, options_for_select([ "Male", "Female" ]) %>
+    <%= f.select :gender, [ "Male", "Female" ] %>
   </div>
 
 <br/>
